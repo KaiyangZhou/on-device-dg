@@ -6,7 +6,7 @@ This repo contains the source code of our project, "[On-Device Domain Generaliza
 
 ## Updates
 
-- **Oct 2022**: Release of source code.
+- **[Oct 2022]** Release of source code.
 
 ## Get Started
 
