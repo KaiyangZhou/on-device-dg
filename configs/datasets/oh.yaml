@@ -1,0 +1,6 @@
+DATASET:
+  NAME: "OfficeHomeDG2"
+
+INPUT:
+  SIZE: (224, 224)
+  INTERPOLATION: "bicubic"

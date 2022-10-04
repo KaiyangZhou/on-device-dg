@@ -1,0 +1,29 @@
+DATALOADER:
+  NUM_WORKERS: 8
+  TRAIN_X:
+    BATCH_SIZE: 32
+  TEST:
+    BATCH_SIZE: 100
+
+INPUT:
+  TRANSFORMS: [
+    "random_resized_crop",
+    "random_flip",
+    "normalize"
+  ]
+  RRCROP_SCALE: (0.7, 1.)
+
+OPTIM:
+  NAME: "sgd"
+  LR: 0.01
+  WEIGHT_DECAY: 5e-4
+  MOMENTUM: 0.9
+  LR_SCHEDULER: "cosine"
+  MAX_EPOCH: 100
+
+TEST:
+  FINAL_MODEL: "best_val"
+
+MODEL:
+  BACKBONE:
+    NAME: "resnet50_efdmix_l12"

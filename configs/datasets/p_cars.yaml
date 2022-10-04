@@ -1,0 +1,6 @@
+DATASET:
+  NAME: "P_Cars"
+
+INPUT:
+  SIZE: (224, 224)
+  INTERPOLATION: "bicubic"

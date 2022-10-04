@@ -1,0 +1,6 @@
+DATASET:
+  NAME: "P_UCF"
+
+INPUT:
+  SIZE: (224, 224)
+  INTERPOLATION: "bicubic"
