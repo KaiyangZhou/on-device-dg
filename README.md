@@ -12,7 +12,7 @@ This repo contains the source code of our project, "[On-Device Domain Generaliza
 
 ### 1. Environment Setup
 
-This code is built on top of the awesome toolbox, [Dassl.pytorch](https://github.com/KaiyangZhou/Dassl.pytorch), so you need to install the `dassl` environment first. Simply follow the instructions described [here](https://github.com/KaiyangZhou/Dassl.pytorch#installation) to install `dassl` as well as PyTorch. After that, run `pip install -r requirements.txt` under `on-device-dg/` to install a few more packages (remember to activate the `dassl` environment via `conda activate dassl` before installing the new packages). Then, you are ready to go.
+This code is built on top of the awesome toolbox, [Dassl.pytorch](https://github.com/KaiyangZhou/Dassl.pytorch), so you need to install the `dassl` environment first. Simply follow the instructions described [here](https://github.com/KaiyangZhou/Dassl.pytorch#installation) to install `dassl` as well as PyTorch. After that, run `pip install -r requirements.txt` under `on-device-dg/` to install a few more packages (remember to activate the `dassl` environment via `conda activate dassl` before installing the new packages).
 
 ### 2. Datasets and Models
 
@@ -20,8 +20,8 @@ We suggest you download and put all datasets under the same folder, e.g., `on-de
 
 - **PACS & OfficeHome**: These two datasets are small (both around 200MB) so we suggest you directly run the code, which will automatically download and preprocess the datasets.
 - **DOSCO-2k**: All datasets from the DOSCO benchmark can be downloaded automatically once you run the code (like PACS and OfficeHome). But we suggest you manually download them first. They can be downloaded from this google drive [link](https://drive.google.com/drive/folders/1QJTz4vJ4Jta6Co6UHYmVnXJUGK1H9-G3?usp=sharing).
-- **Pretrained teacher models (ResNet50)**: The pretrained ERM models based on ResNet50, i.e., KD's teacher as reported in the paper, can be downloaded from [here](https://drive.google.com/file/d/1Lekwtite9VqM3BWEQj1Z312O0YsRfFrR/view?usp=sharing). Please download and extract the file under `on-device-dg/`. To reproduce the results of KD and OKD, please use these pretrained teacher models.
-- **PlacesViT**: The model weights can be downloaded [here](https://drive.google.com/file/d/1__940fYMzzObU48JP3cveVHbUeexhk23/view?usp=sharing). Please put the weights under `on-device-dg/tools/`. You can take a look at `on-device-dg/tools/featext.py` if you would like to use PlacesViT for your own datasets.
+- **Pretrained teacher models (ResNet50)**: The pretrained ERM models based on ResNet50, i.e., *KD's teacher* as reported in the paper, can be downloaded [here](https://drive.google.com/file/d/1Lekwtite9VqM3BWEQj1Z312O0YsRfFrR/view?usp=sharing). Please download and extract the file under `on-device-dg/`. To reproduce the results of KD and OKD, you should use these pretrained teacher models.
+- **PlacesViT**: The model weights can be downloaded [here](https://drive.google.com/file/d/1__940fYMzzObU48JP3cveVHbUeexhk23/view?usp=sharing). Please put the weights under `on-device-dg/tools/`. The feature extraction code is provided in `on-device-dg/tools/featext.py`.
 
 ### 3. How to Run
 
@@ -42,15 +42,17 @@ Below are the example commands used to reproduce the results on DOSCO-2k's P-Air
 
 Some notes:
 - MixStyle and EFDMix use the same trainer as ERM, i.e., `Vanilla`.
-- See `on-device-dg/configs/datasets/` for the valid dataset names (i.e., those file names like `p_air` and `p_cars`).
+- To use a different dataset, simply change `p_air`. Note that the dataset names should match the file names in `on-device-dg/configs/datasets/`, such as `p_cars` for `P-Cars` and `p_ctech` for `P-Ctech`.
 - To use a different architecture like MobileNetV2-Tiny or MCUNet studied in the paper, simply change `mobilenet_v3_small` to `mobilenet_v2_tiny` or `mcunet`. (The model names should match the file names in `on-device-dg/configs/hparam`.)
 - To reproduce the results on PACS and OfficeHome, you need to (i) change `p_air` to `pacs` or `oh`, (ii) change `2k` to `full`, and (iii) add an index number from `{1, 2, 3, 4}` at the end of the argument list. Say you want to run OKD on PACS, which has four settings (each using one of the four domains as the test domain), the command template is `bash scripts/okd.sh OKD fusion pacs mobilenet_v3_small 2k {TIDX}` where `TIDX = 1/2/3/4`.
 
 ## Citation
 
+```bash
 @article{zhou2022device,
   title={On-Device Domain Generalization},
   author={Zhou, Kaiyang and Zhang, Yuanhan and Zang, Yuhang and Yang, Jingkang and Loy, Chen Change and Liu, Ziwei},
   journal={arXiv preprint arXiv:2209.07521},
   year={2022}
 }
+```
