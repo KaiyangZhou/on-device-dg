@@ -6,6 +6,7 @@ This repo contains the source code of our project, "[On-Device Domain Generaliza
 
 ## Updates
 
+- **[Oct 2022]** Adds [CoOp](https://arxiv.org/abs/2109.01134) & [CoCoOp](https://arxiv.org/abs/2203.05557) to this repo. The running scripts are provided in `scripts/prompts`. See their papers for the results on DOSCO-2k.
 - **[Oct 2022]** Release of source code.
 
 ## Get Started
