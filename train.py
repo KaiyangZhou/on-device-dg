@@ -28,6 +28,9 @@ import trainers.kd.crd
 import trainers.kd.rkd
 import trainers.kd.pkt
 import trainers.ours.okd
+import trainers.prompts.zsclip
+import trainers.prompts.coop
+import trainers.prompts.cocoop
 
 # Models
 import models.resnet
@@ -103,6 +106,20 @@ def extend_cfg(cfg):
 
     # OKD
     cfg.OKD_AUG_TYPE = "fusion"  # {adv, mixup, cutmix, jigsaw, noise, fusion}
+    
+    # CoOp
+    cfg.TRAINER.COOP = CN()
+    cfg.TRAINER.COOP.N_CTX = 16  # number of context vectors
+    cfg.TRAINER.COOP.CSC = False  # class-specific context
+    cfg.TRAINER.COOP.CTX_INIT = ""  # initialization words
+    cfg.TRAINER.COOP.PREC = "fp16"  # fp16, fp32, amp
+    cfg.TRAINER.COOP.CLASS_TOKEN_POSITION = "end"  # 'middle' or 'end' or 'front'
+
+    # CoCoOp
+    cfg.TRAINER.COCOOP = CN()
+    cfg.TRAINER.COCOOP.N_CTX = 16  # number of context vectors
+    cfg.TRAINER.COCOOP.CTX_INIT = ""  # initialization words
+    cfg.TRAINER.COCOOP.PREC = "fp16"  # fp16, fp32, amp
 
 
 def setup_cfg(args):
