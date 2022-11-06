@@ -14,8 +14,6 @@ import datasets.p_pets
 import datasets.p_ucf
 import datasets.p_ins
 import datasets.p_mam
-import datasets.pacs2
-import datasets.oh2
 
 # Trainer
 import trainers.dg.rsc

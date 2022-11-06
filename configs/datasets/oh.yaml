@@ -1,5 +1,5 @@
 DATASET:
-  NAME: "OfficeHomeDG2"
+  NAME: "OfficeHomeDG"
 
 INPUT:
   SIZE: (224, 224)
