@@ -36,8 +36,8 @@ The `DATA_ROOT` argument is set to `./data/` by default. Feel free to change the
 Below are the example commands used to reproduce the results on DOSCO-2k's P-Air using MobileNetV3-Small (should be run under `on-device-dg/`):
 - **ERM**: `bash scripts/generic.sh Vanilla p_air mobilenet_v3_small 2k`
 - **RSC**: `bash scripts/generic.sh RSC p_air mobilenet_v3_small 2k`
-- **MixStyle**: `bash scripts/generic.sh Vanilla p_air mobilenet_v3_small_ms_l12.yaml 2k`
-- **EFDMix**: `bash scripts/generic.sh Vanilla p_air mobilenet_v3_small_efdmix_l12.yaml 2k`
+- **MixStyle**: `bash scripts/generic.sh Vanilla p_air mobilenet_v3_small_ms_l12 2k`
+- **EFDMix**: `bash scripts/generic.sh Vanilla p_air mobilenet_v3_small_efdmix_l12 2k`
 - **KD**: `bash scripts/kd.sh KD p_air mobilenet_v3_small 2k`
 - **OKD**: `bash scripts/okd.sh OKD fusion p_air mobilenet_v3_small 2k`
 
@@ -45,7 +45,7 @@ Some notes:
 - MixStyle and EFDMix use the same trainer as ERM, i.e., `Vanilla`.
 - To use a different dataset, simply change `p_air`. Note that the dataset names should match the file names in `on-device-dg/configs/datasets/`, such as `p_cars` for `P-Cars` and `p_ctech` for `P-Ctech`.
 - To use a different architecture like MobileNetV2-Tiny or MCUNet studied in the paper, simply change `mobilenet_v3_small` to `mobilenet_v2_tiny` or `mcunet`. (The model names should match the file names in `on-device-dg/configs/hparam`.)
-- To reproduce the results on PACS and OfficeHome, you need to (i) change `p_air` to `pacs` or `oh`, (ii) change `2k` to `full`, and (iii) add an index number from `{1, 2, 3, 4}` at the end of the argument list. Say you want to run OKD on PACS, which has four settings (each using one of the four domains as the test domain), the command template is `bash scripts/okd.sh OKD fusion pacs mobilenet_v3_small 2k {TIDX}` where `TIDX = 1/2/3/4`.
+- To reproduce the results on PACS and OfficeHome, you need to (i) change `p_air` to `pacs` or `oh`, (ii) change `2k` to `full`, and (iii) add an index number from `{1, 2, 3, 4}` at the end of the argument list. Say you want to run OKD on PACS, which has four settings (each using one of the four domains as the test domain), the command template is `bash scripts/okd.sh OKD fusion pacs mobilenet_v3_small full {TIDX}` where `TIDX = 1/2/3/4`.
 - After you obtain the results of three seeds, you can use `parse_test_res.py` to automatically compute the average results. You can give a quick try: say you have downloaded the pretrained teacher models at `on-device-dg/pretrained`, run `python parse_test_res.py pretrained/Vanilla/p_air/env_2k/resnet50/` to get the average results for the P-Air dataset (basically `../resnet50/` should contain three seed folders each containing a `log.txt` file). Note that for PACS and OfficeHome, the `../resnet50/` folder contains four sets of results each corresponding to a test domain, you need to use `python parse_test_res.py pretrained/Vanilla/pacs/env_full/resnet50/ --multi-exp`.
 
 ## Citation
