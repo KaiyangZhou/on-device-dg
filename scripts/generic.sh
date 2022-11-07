@@ -20,11 +20,6 @@ elif [[ $DATASET == "oh" ]]; then
     D2=clipart
     D3=product
     D4=real_world
-elif [[ $DATASET == "digits_dg" ]]; then
-    D1=mnist
-    D2=mnist_m
-    D3=svhn
-    D4=syn
 else
     D1=none
     D2=none
@@ -59,7 +54,7 @@ fi
 
 for SEED in 1 2 3
 do
-    if [[ $DATASET == "pacs" || $DATASET == "oh" || $DATASET == "digits_dg" ]]; then
+    if [[ $DATASET == "pacs" || $DATASET == "oh" ]]; then
         OUTPUT_DIR=output/${TRAINER}/${DATASET}/env_${ENV}/${HPARAM}/${T}/seed${SEED}
     else
         OUTPUT_DIR=output/${TRAINER}/${DATASET}/env_${ENV}/${HPARAM}/seed${SEED}
@@ -68,7 +63,7 @@ do
     if [ -d "$OUTPUT_DIR" ]; then
         echo "Oops! The results already exist at ${OUTPUT_DIR} (so skip this job)"
     else
-        if [[ $DATASET == "pacs" || $DATASET == "oh" || $DATASET == "digits_dg" ]]; then
+        if [[ $DATASET == "pacs" || $DATASET == "oh" ]]; then
             python train.py \
             --root ${DATA_ROOT} \
             --seed ${SEED} \
