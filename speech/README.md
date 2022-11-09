@@ -38,12 +38,12 @@ Then you are ready to go.
 
 The training command for each model is shown below.
 
-- **ERM (M11, the teacher model)**: python main.py -i 1 -m M11 --alg erm -o output/erm/M11/seed1
-- **ERM (M3)**: python main.py -i 1 -m M3 --alg erm -o output/erm/M3/seed1
-- **KD (M3)**: python main.py -i 1 -m M3 --alg kd -o output/kd/M3/seed1
-- **OKD (M3, mixup)**: python main.py -i 1 -m M3 --alg okd --ood_type mixup -o output/okd/mixup/M3/seed1
-- **OKD (M3, mask)**: python main.py -i 1 -m M3 --alg okd --ood_type mask -o output/okd/mask/M3/seed1
-- **OKD (M3, noise)**: python main.py -i 1 -m M3 --alg okd --ood_type noise -o output/okd/noise/M3/seed1
+- **ERM (M11, the teacher model)**: `python main.py -i 1 -m M11 --alg erm -o output/erm/M11/seed1`
+- **ERM (M3)**: `python main.py -i 1 -m M3 --alg erm -o output/erm/M3/seed1`
+- **KD (M3)**: `python main.py -i 1 -m M3 --alg kd -o output/kd/M3/seed1`
+- **OKD (M3, mixup)**: `python main.py -i 1 -m M3 --alg okd --ood_type mixup -o output/okd/mixup/M3/seed1`
+- **OKD (M3, mask)**: `python main.py -i 1 -m M3 --alg okd --ood_type mask -o output/okd/mask/M3/seed1`
+- **OKD (M3, noise)**: `python main.py -i 1 -m M3 --alg okd --ood_type noise -o output/okd/noise/M3/seed1`
 
 For KD/OKD, you need to train the teacher model first, i.e., ERM (M11).
 
