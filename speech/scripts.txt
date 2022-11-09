@@ -1,0 +1,8 @@
+python main.py -i 1 -m M11 --alg erm -o output/erm/M11/seed1
+
+python main.py -i 1 -m M3 --alg erm -o output/erm/M3/seed1
+python main.py -i 1 -m M3 --alg kd -o output/kd/M3/seed1
+
+python main.py -i 1 -m M3 --alg okd --ood_type mixup -o output/okd/mixup/M3/seed1
+python main.py -i 1 -m M3 --alg okd --ood_type mask -o output/okd/mask/M3/seed1
+python main.py -i 1 -m M3 --alg okd --ood_type noise -o output/okd/noise/M3/seed1
